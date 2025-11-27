@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Typing Streakt — Play</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="nav-logo" href="index.html" aria-label="Home">
+      <div class="logo-icon" aria-hidden="true">∞</div>
+      <span>Typing Streak</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="play.html" class="nav-item active">Play</a>
+      <a href="about.html" class="nav-item">About Us</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <label>Mode:
+        <select id="mode">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+          <option value="custom">Custom (level)</option>
+        </select>
+      </label>
+
+      <label id="customLabel" style="display:none">Level:
+        <input id="customLevel" type="range" min="1" max="10" value="5">
+        <span id="levelVal">5</span>
+      </label>
+
+      <label id="customInputLabel" style="display:none; width:100%">Custom words / sentences:
+        <textarea id="customInput" placeholder="Enter words or sentences separated by spaces, commas or new lines" style="width:100%;min-height:64px;margin-top:8px;padding:8px;border-radius:8px;border:1px solid rgba(18,32,40,0.06);"></textarea>
+      </label>
+
+      <label>Timer (seconds):
+        <input id="timerInput" type="number" min="10" max="600" value="60">
+      </label>
+
+      <div class="control-actions">
+        <button id="generateBtn" class="btn">Generate & Start</button>
+        <button id="resetBtn" class="btn ghost">Reset</button>
+      </div>
+    </section>
+
+    <section class="game-area">
+      <div id="targetText" class="target" tabindex="0" aria-live="polite"></div>
+
+      <textarea id="inputArea" placeholder="Type here..." autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+
+      <div class="statusbar">
+        <div>Time: <strong id="timeLeft">0</strong>s</div>
+        <div>Errors: <strong id="errors">0</strong></div>
+        <div>Accuracy: <strong id="accuracy">100%</strong></div>
+        <div>WPS: <strong id="wps">0.00</strong></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- result modal -->
+  <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close-btn" id="closeModal">✕</button>
+      <h3>Results</h3>
+      <p>Time elapsed: <span id="resTime">0</span>s</p>
+      <p>Words typed (correct): <span id="resWords">0</span></p>
+      <p>Errors: <span id="resErrors">0</span></p>
+      <p>Accuracy: <span id="resAcc">0%</span></p>
+      <p>WPS: <span id="resWps">0.00</span></p>
+      <p>Rating: <strong id="resRating">—</strong></p>
+      <div style="margin-top:14px"><button id="replay" class="btn">Play Again</button></div>
+    </div>
+  </div>
+
+  <script src="assets/game.js"></script>
+</body>
+</html>
